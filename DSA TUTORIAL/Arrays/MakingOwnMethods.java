@@ -1,7 +1,5 @@
 // Making Own Array Method
 
-import java.util.Arrays;
-
 class ArrayList {
     // Making Variables and making own methods
     private int arr[];
@@ -31,8 +29,8 @@ class ArrayList {
         // StringBuilder is the best way to propogate the array.
         StringBuilder str = new StringBuilder();
         str.append("[");
-        for (int number : this.arr) {
-            str.append(number + ", ");
+        for (int i = 0;i<this.curruntidx;i++) {
+            str.append(this.arr[i]).append(", ");
         }
         str.append("\b").append("\b").append("]");
         return str.toString();
@@ -45,20 +43,25 @@ class ArrayList {
         return arr[lastIdx];
     }
 
-    // Delete Method
-    // Using toString Method While use this delete method otherwise it returns adress of the variable...
-    public int[] delete(int number) {
-        int lastIdx = arr.length - 1;
-        int[] newArray = new int[lastIdx];
-        int j = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != number) {
-                newArray[j] = arr[i];
-                j++;
+    public void delete(int index) {
+
+        for (int i = 0; i < curruntidx - 2; i++) {
+            this.arr[i] = this.arr[i+1];
+            this.arr[curruntidx] = 0;
+            curruntidx--;
+        }
+    }
+
+    // IndexOf Method
+
+    public int indexOf(int number) {
+        // Using Liner Search;
+        for(int i = 0;i<curruntidx;i++) {
+            if(arr[i] == number) {
+                return i;
             }
         }
-        arr = newArray;
-        return arr;
+        return -1;
     }
 
 }
@@ -72,12 +75,28 @@ public class MakingOwnMethods {
         // 3. Now Use Add Method to Add Elements in array.
 
         ArrayList a1 = new ArrayList();
-        a1.myArray(2);
+        a1.myArray(11);
         a1.add(3);
         a1.add(4);
         System.out.println(a1);
 
         System.out.println(a1.pop());
-        System.out.println(Arrays.toString(a1.delete(4)));
+
+        a1.add(10);
+        a1.add(40);
+        a1.add(50);
+        a1.add(70);
+        a1.add(80);
+        a1.add(90);
+        a1.add(100);
+        a1.add(200);
+
+        System.out.println("This is the full Array"+a1);
+
+        System.out.println("Index is: "+a1.indexOf(40));
+
+        a1.delete(30);
+        a1.delete(70);
+        System.out.println("This is the new updated Array: "+a1);
     }
 }
