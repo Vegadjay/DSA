@@ -64,6 +64,29 @@ class ArrayList {
         return -1;
     }
 
+
+    // Adding Method to find maximum from the array.
+
+    public int max() {
+        int number = this.arr[0];
+        for(int i =1;i<this.curruntidx;i++) {
+             if(arr[i] > number) {
+                number = arr[i];
+            }
+        }
+            return number;
+    }
+
+    // Adding Method to Find Minimum from array.
+    public int min() {
+        int number = this.arr[0];
+        for(int i = 1;i<this.curruntidx;i++) {
+            if(arr[i] < number) {
+                number = arr[i];
+            }
+        }
+        return number;
+    }
 }
 
 public class MakingOwnMethods {
