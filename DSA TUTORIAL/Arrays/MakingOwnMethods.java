@@ -29,7 +29,7 @@ class ArrayList {
         // StringBuilder is the best way to propogate the array.
         StringBuilder str = new StringBuilder();
         str.append("[");
-        for (int i = 0;i<this.curruntidx;i++) {
+        for (int i = 0; i < this.curruntidx; i++) {
             str.append(this.arr[i]).append(", ");
         }
         str.append("\b").append("\b").append("]");
@@ -44,9 +44,8 @@ class ArrayList {
     }
 
     public void delete(int index) {
-
         for (int i = 0; i < curruntidx - 2; i++) {
-            this.arr[i] = this.arr[i+1];
+            this.arr[i] = this.arr[i + 1];
             this.arr[curruntidx] = 0;
             curruntidx--;
         }
@@ -56,25 +55,24 @@ class ArrayList {
 
     public int indexOf(int number) {
         // Using Liner Search;
-        for(int i = 0;i<curruntidx;i++) {
-            if(arr[i] == number) {
+        for (int i = 0; i < curruntidx; i++) {
+            if (arr[i] == number) {
                 return i;
             }
         }
         return -1;
     }
 
-
     // Adding Method to find maximum from the array.
 
     public int max() {
         int number = this.arr[0];
-        for(int i =1;i<this.curruntidx;i++) {
-             if(arr[i] > number) {
+        for (int i = 1; i < this.curruntidx; i++) {
+            if (arr[i] > number) {
                 number = arr[i];
             }
         }
-            return number;
+        return number;
     }
 
     // Adding Method to Find Minimum from array.
@@ -86,6 +84,19 @@ class ArrayList {
             }
         }
         return number;
+    }
+
+    // Now making reverse Function
+    public void reverse() {
+        int i = 0;
+        int j = this.curruntidx - 1;
+        while (i<j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
     }
 }
 
@@ -114,12 +125,22 @@ public class MakingOwnMethods {
         a1.add(100);
         a1.add(200);
 
-        System.out.println("This is the full Array"+a1);
+        System.out.println("This is the full Array" + a1);
 
-        System.out.println("Index is: "+a1.indexOf(40));
+        System.out.println("Index is: " + a1.indexOf(40));
 
+        // Delete number using index
         a1.delete(30);
         a1.delete(70);
-        System.out.println("This is the new updated Array: "+a1);
+        System.out.println("This is the new updated Array: " + a1);
+
+        // Find max and min
+
+        System.out.println("This is the minimum Number from entire array: " + a1.min());
+        System.out.println("This is the Maximum Number from entire array: " + a1.max());
+
+        // Now reverse the arr;
+        a1.reverse();
+        System.out.println("This is the reverse array: " + a1);
     }
 }
